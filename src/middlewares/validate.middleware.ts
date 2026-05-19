@@ -1,13 +1,8 @@
-// ==========================================
 // INTEGRANTE: Jonathan Quingahuano
-// TAREA: Middleware de Validacion de Datos (validateTask)
-// ==========================================
-
 // PARTE 1: LAS IMPORTACIONES (TRAER HERRAMIENTAS)
 // Traigo lo de express pra manejar peticiones y respuestas, y Zod pra los errores.
 import { Request, Response, NextFunction } from 'express';
 import { AnyZodObject, ZodError } from 'zod';
-
 // PARTE 2: LA FUNCION FILTRO (VALIDATETASK)
 // Aqui creo la funcion que va a recibir el esquema de zod pra revisar la peticion.
 export const validateTask = (schema: AnyZodObject) => {
@@ -17,7 +12,6 @@ export const validateTask = (schema: AnyZodObject) => {
             // Intenta validar lo que viene en el cuerpo de la petición
             // Compara q el body cumpla con las reglas que pusimos en el Schema.
             schema.parse(req.body);
-            
             // Si todo esta bien y no falta ningun dato obligatorio, next() deja pasar al controlador.
             next(); 
         } catch (error) {
